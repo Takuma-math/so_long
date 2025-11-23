@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 MLX_INC = -I./mlx
 MLX_LIB = -L./mlx -lmlx -framework OpenGL -framework AppKit
-SRC = src/main.c src/map_parser.c src/map_utils.c
+SRC = src/main.c src/map_parser.c src/map_validator.c
 OBJ = $(SRC:.c=.o)
 RM = rm -f
 

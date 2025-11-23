@@ -6,11 +6,10 @@
 /*   By: takhayas <hayatakucat@icloud.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 14:09:02 by takhayas          #+#    #+#             */
-/*   Updated: 2025/11/23 23:20:31 by takhayas         ###   ########.fr       */
+/*   Updated: 2025/11/24 01:13:52 by takhayas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "../so_long.h"
 
 // typedef struct	s_data {
@@ -52,22 +51,23 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (1);
-	// if (map_parser(argv[1]))
-	// 	return (1);
 	map = map_reader(argv[1]);
-	//for test
 	if (map == NULL)
 	{
 		ft_printf("Error\nFailed to read map\n");
 		return (1);
 	}
-	i = 0;
-	while (map[i])
-	{
-		ft_printf("%s\n", map[i]);
-		free(map[i]);
-		i++;
-	}
+	if (is_invalid_map(map))
+		return (ft_put_map_error(is_invalid_map(map)));
 	free(map);
-	//
+	return (0);
 }
+
+	// //for test
+	// i = 0;
+	// while (map[i])
+	// {
+	// 	ft_printf("%s\n", map[i]);
+	// 	free(map[i]);
+	// 	i++;
+	// }

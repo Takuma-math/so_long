@@ -6,7 +6,7 @@
 /*   By: takhayas <hayatakucat@icloud.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 18:33:21 by takhayas          #+#    #+#             */
-/*   Updated: 2025/11/23 22:57:41 by takhayas         ###   ########.fr       */
+/*   Updated: 2025/11/24 01:11:54 by takhayas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@
 # include "libft/ft_printf.h"
 # include "libft/get_next_line.h"
 
-int		map_opener(char *file_name, int *fd);
-void	ft_free_all(char **words, int i);
 char	**map_reader(char *file_name);
-int		*get_map_len_height(char *file_name);
+int		is_invalid_map(char **map);
+int	ft_put_map_error(int i);
 #endif

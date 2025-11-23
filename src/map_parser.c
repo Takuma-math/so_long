@@ -6,11 +6,25 @@
 /*   By: takhayas <hayatakucat@icloud.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 18:32:33 by takhayas          #+#    #+#             */
-/*   Updated: 2025/11/24 00:02:21 by takhayas         ###   ########.fr       */
+/*   Updated: 2025/11/24 00:12:13 by takhayas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+static int	map_opener(char *file_name, int *fd)
+{
+	char	*full_path;
+
+	full_path = ft_strjoin("./maps/", file_name);
+	if (!full_path)
+		return (1);
+	*fd = open(full_path, O_RDONLY);
+	free(full_path);
+	if (*fd == -1)
+		return (1);
+	return (0);
+}
 
 static t_list	*read_map_to_list(int fd)
 {
@@ -61,7 +75,7 @@ static char	**list_to_2d_array(t_list *head, int size)
 	return (map);
 }
 
-void	free_list_nodes(t_list *head)
+static void	free_list_nodes(t_list *head)
 {
 	t_list	*tmp;
 
