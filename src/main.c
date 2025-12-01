@@ -6,7 +6,7 @@
 /*   By: takhayas <hayatakucat@icloud.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 14:09:02 by takhayas          #+#    #+#             */
-/*   Updated: 2025/11/24 01:13:52 by takhayas         ###   ########.fr       */
+/*   Updated: 2025/12/01 15:31:10 by takhayas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,22 @@
 // 	mlx_loop(mlx);
 // }
 
+void	ft_free_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+	return ;
+}
+
 int	main(int argc, char **argv)
 {
-	int		i;
 	char	**map;
 
 	if (argc != 2)
@@ -59,11 +72,12 @@ int	main(int argc, char **argv)
 	}
 	if (is_invalid_map(map))
 		return (ft_put_map_error(is_invalid_map(map)));
-	free(map);
+	ft_free_map(map);
 	return (0);
 }
 
 	// //for test
+	// int	i;
 	// i = 0;
 	// while (map[i])
 	// {
@@ -71,3 +85,4 @@ int	main(int argc, char **argv)
 	// 	free(map[i]);
 	// 	i++;
 	// }
+	////

@@ -5,70 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: takhayas <hayatakucat@icloud.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/24 00:13:08 by takhayas          #+#    #+#             */
-/*   Updated: 2025/11/24 01:11:39 by takhayas         ###   ########.fr       */
+/*   Created: 2025/12/01 14:53:59 by takhayas          #+#    #+#             */
+/*   Updated: 2025/12/01 16:42:10 by takhayas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-static int	is_not_rectangular(char **map)
-{
-	size_t	width;
-	int		i;
-
-	if (!map || !map[0])
-		return (1);
-	width = ft_strlen(map[0]);
-	i = 0;
-	while (map[i])
-	{
-		if (ft_strlen(map[i]) != width)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-static int	is_not_surrounded_by_walls(char **map)
-{
-	int	width;
-	int	height;
-	int	i;
-
-	if (!map || !map[0])
-		return (1);
-	width = ft_strlen(map[0]);
-	height = 0;
-	while (map[height])
-		height ++;
-	i = 0;
-	while (i < width)
-	{
-		if (map[0][i] != '1' || map[height - 1][i] != '1')
-			return (1);
-		i++;
-	}
-	i = 0;
-	while (i < height)
-	{
-		if (map[i][0] != '1' || map[i][width - 1] != '1')
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 int	ft_put_map_error(int i)
 {
 	if (i == 0)
 		return (0);
 	if (i == 1)
-		ft_printf("Error\nmap not exist");
+		ft_printf("Error\nmap not exist\n");
 	if (i == 2)
-		ft_printf("Error\nmap is not rectangular");
+		ft_printf("Error\nmap is not rectangular\n");
 	if (i == 3)
-		ft_printf("Error\nmap is not surrounded by walls");
+		ft_printf("Error\nmap is not surrounded by walls\n");
+	if (i == 4)
+		ft_printf("Error\nmap_must_have_one_start_point\n");
+	if (i == 5)
+		ft_printf("Error\nmap_must_have_one_exit\n");
+	if (i == 6)
+		ft_printf("Error\nmap_must_have_collectibles\n");
+	if (i == 7)
+		ft_printf("Error\nYou cannot reach exit on the map\n");
 	return (1);
 }
 
@@ -80,5 +41,13 @@ int	is_invalid_map(char **map)
 		return (2);
 	if (is_not_surrounded_by_walls(map))
 		return (3);
+	if (ft_not_have_one_start(map))
+		return (4);
+	if (ft_not_have_one_exit(map))
+		return (5);
+	if (!ft_collectibles_count(map))
+		return (6);
+	if (ft_is_not_playable(map, ft_collectibles_count(map)))
+		return (7);
 	return (0);
 }
