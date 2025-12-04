@@ -6,11 +6,25 @@
 /*   By: takhayas <hayatakucat@icloud.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 14:53:59 by takhayas          #+#    #+#             */
-/*   Updated: 2025/12/01 16:42:10 by takhayas         ###   ########.fr       */
+/*   Updated: 2025/12/02 13:38:58 by takhayas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	ft_free_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+	return ;
+}
 
 int	ft_put_map_error(int i)
 {

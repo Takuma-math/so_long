@@ -6,7 +6,7 @@
 /*   By: takhayas <hayatakucat@icloud.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 18:33:21 by takhayas          #+#    #+#             */
-/*   Updated: 2025/12/01 16:37:07 by takhayas         ###   ########.fr       */
+/*   Updated: 2025/12/02 13:39:12 by takhayas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ typedef struct s_flood_data
 	int	height;
 }	t_flood_data;
 
-void	ft_free_map(char **map);
 //map_parser.c
 char	**map_reader(char *file_name);
 //map_validator.c
 int		is_invalid_map(char **map);
 int		ft_put_map_error(int i);
+void	ft_free_map(char **map);
 //map_shape_validator.c
 int		is_not_rectangular(char **map);
 int		is_not_surrounded_by_walls(char **map);
