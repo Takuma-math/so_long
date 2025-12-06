@@ -6,13 +6,13 @@
 /*   By: takhayas <hayatakucat@icloud.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 15:14:45 by takhayas          #+#    #+#             */
-/*   Updated: 2025/12/01 16:31:27 by takhayas         ###   ########.fr       */
+/*   Updated: 2025/12/06 02:08:56 by takhayas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static void	find_player_start(char **map, int *x, int *y)
+void	find_player_start(char **map, int *x, int *y)
 {
 	int	player_x;
 	int	player_y;
